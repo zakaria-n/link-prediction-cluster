@@ -14,7 +14,7 @@ for i in range(128):
     columns.append("dim"+str(i+1))
 
 emb = pd.read_csv(f'embeddings/{algorithm}/{dataset}.emb', delim_whitespace=True, names=columns).sort_values(by=['node_id'], ascending=True)
-emb = emb.sample(12000)
+#emb = emb.sample(12000)
 
 dimensions = []
 for i in range(128):
@@ -38,7 +38,7 @@ for index, row in emb.iterrows():
 
 edges = pd.read_csv(f'edgelists/{dataset}.edgelist', delim_whitespace=True, names=["node1", "node2"])
 edges = edges.reset_index(drop=True)
-edges = edges.sample(350000)
+#edges = edges.sample(350000)
 
 negative = pd.concat([edges, pairs]).drop_duplicates(keep=False)
 negative = negative.sample(len(edges))
